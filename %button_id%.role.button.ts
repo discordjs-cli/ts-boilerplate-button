@@ -8,7 +8,7 @@ export default {
 
         const role = '%role_id%'; // Role ID to add/remove
         
-        member.roles.cache.find((r) => r.id === `${role}`)
+        member.roles.cache.find((r: any) => r.id === `${role}`)
             ? member.roles
                   .remove(`${role}`)
                   .then(async () => {
@@ -17,9 +17,9 @@ export default {
                               content: `Removed the <@&${role}> role!`,
                               ephemeral: true,
                           })
-                          .catch((err) => console.log(err));
+                          .catch((err: any) => console.log(err));
                   })
-                  .catch((error) => {
+                  .catch((error: any) => {
                       if (error.message === 'Missing Permissions')
                           return interaction.editReply({
                               content: `**Unable to remove the <@&${role}> role :/**\n\n>>> Contact a server admin about moving my role above the <@&${role}> role so I can remove it :)`,
@@ -34,9 +34,9 @@ export default {
                               content: `Added the <@&${role}> role!`,
                               ephemeral: true,
                           })
-                          .catch((err) => console.log(err));
+                          .catch((err: any) => console.log(err));
                   })
-                  .catch((error) => {
+                  .catch((error: any) => {
                       if (error.message === 'Missing Permissions')
                           return interaction.editReply({
                               content: `**Unable to add the <@&${role}> role :/**\n\n>>> Contact a server admin about moving my role above the <@&${role}> role so I can add it :)`,
